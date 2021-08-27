@@ -5,6 +5,15 @@
   margin-top: 3rem;
   padding: 1rem;
   border-radius: .4rem;
+  font-family: 'Roboto', sans-serif;
+  color: rgb(99, 99, 99);
+}
+
+@media (max-width: 480px) {
+  .App {
+    margin-top: 1rem;
+    width: 100%;
+  }
 }
 
 .App h1 {
@@ -17,11 +26,23 @@ button {
   padding: .75rem 2rem;
   border-radius: .4rem;
   font-size: 1rem;
+  font-weight: 600;
+  background-color: rgb(64, 117, 250);
+  color: white;
 }
 
-@media (max-width: 480px) {
-  .App {
-    margin-top: 1rem;
-    width: 100%;
-  }
+button.reset {
+  padding: .5rem 1.5rem;
+  font-size: .9rem;
+  background-color: rgb(184, 184, 184);
+}
+
+.control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.control .number-to-guest {
+  font-size: 1rem;
 }

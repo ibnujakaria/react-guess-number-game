@@ -5,17 +5,22 @@ import YouLose from './YouLose';
 import YouWin from './YouWin';
 
 const GameBoard = ({ numberToGuess }) => {
+  const defaultChance = 3
+
   const [randomNumbers, setRandomNumbers] = useState([]);
-  const [remainingChances, setRemainingChances] = useState(3);
+  const [remainingChances, setRemainingChances] = useState(defaultChance);
   const [isWin, setIsWin] = useState(false);
   const [isLose, setIsLose] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
 
   const handleWin = () => {
     setIsWin(true)
+    setTimeout(() => setShowMessage(true), 1000)
   }
-
+  
   const handleLose = () => {
     setIsLose(true)
+    setTimeout(() => setShowMessage(true), 1000)
   }
 
   // random the numbers
@@ -39,9 +44,10 @@ const GameBoard = ({ numberToGuess }) => {
     numbers.splice(randomIndex, 0, numberToGuess)
 
     setRandomNumbers(numbers)
-    setRemainingChances(3)
+    setRemainingChances(defaultChance)
     setIsWin(false)
     setIsLose(false)
+    setShowMessage(false)
   }, [numberToGuess])
 
   const handleTileClick = (number) => {
@@ -60,19 +66,24 @@ const GameBoard = ({ numberToGuess }) => {
 
   return (
     <>
-      <section className="game-board">
+      <section
+        key={numberToGuess}
+        className="game-board"
+      >
         <div className="tiles">
         {numberToGuess !== null && randomNumbers.map((number) => (
           <Tile
             number={number}
             onClick={handleTileClick}
             disabled={isWin || isLose}
+            isCorrect={number === numberToGuess}
+            forceOpen={isLose}
           />
         ))}
         </div>
 
-        {isWin && <YouWin />}
-        {isLose && <YouLose />}
+        {showMessage && isWin && <YouWin />}
+        {showMessage && isLose && <YouLose />}
       </section>
     </>
   )

@@ -23,11 +23,17 @@ function App() {
       )}
 
       {numberToGuess !== null && (
-        <button
-          onClick={handleReset}
-        >
-          Reset
-        </button>
+        <div className="control">
+          <div className="number-to-guest">
+            Number: {numberToGuess}
+          </div>
+          <button
+            onClick={handleReset}
+            className='reset'
+          >
+            Reset
+          </button>
+        </div>
       )}
 
       <GameBoard

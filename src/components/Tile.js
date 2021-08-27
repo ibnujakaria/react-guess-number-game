@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Tile.css'
 
-const Tile = ({ number, onClick, disabled = false }) => {
+const Tile = ({ number, onClick, isCorrect, forceOpen, disabled = false }) => {
   const [opened, setOpened] = useState(false)
 
   const handleClick = () => {
@@ -12,14 +12,30 @@ const Tile = ({ number, onClick, disabled = false }) => {
     }
   }
 
+  const getClasses = () => {
+    if (opened) {
+      if (isCorrect) {
+        return 'opened correct'
+      }
+
+      return 'opened'
+    }
+
+    if (forceOpen && isCorrect) {
+      return 'correct'
+    }
+
+    return ''
+  }
+
   return (
     <>
       <button
-        className={`tile ${opened ? 'opened' : ''}`}
+        className={`tile ${getClasses()}`}
         onClick={handleClick}
         disabled={disabled}
       >
-        {opened && number}
+        {(opened || (forceOpen && isCorrect)) && number}
       </button>
     </>
   )
