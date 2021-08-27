@@ -13,6 +13,10 @@
 
 button {
   cursor: pointer;
+  border: none;
+  padding: .75rem 2rem;
+  border-radius: .4rem;
+  font-size: 1rem;
 }
 
 @media (max-width: 480px) {

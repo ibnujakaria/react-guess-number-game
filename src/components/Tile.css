@@ -1,4 +1,7 @@
 button.tile {
   aspect-ratio: 1 / 1;
   cursor: pointer;
+  border-radius: 0;
+  border: 1px solid rgb(228, 228, 228);
+  font-size: 2rem;
 }

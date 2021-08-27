@@ -5,4 +5,7 @@
 .tiles {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-radius: .4rem;
+  overflow: hidden;
+  margin: 1rem 0;
 }
