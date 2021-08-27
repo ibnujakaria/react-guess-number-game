@@ -1,23 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import InputNumber from './containers/InputNumber';
+import GameBoard from './containers/GameBoard';
 
 function App() {
+  const [numberToGuess, setNumberToGuess] = useState(null);
+
+  const handleReset = () => {
+    setNumberToGuess(null)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <h1>
+        Guess Number
+      </h1>
+    
+      {numberToGuess === null && (
+        <InputNumber
+          onStart={setNumberToGuess}
+        />
+      )}
+
+      {numberToGuess !== null && (
+        <button
+          onClick={handleReset}
         >
-          Learn React
-        </a>
-      </header>
+          Reset
+        </button>
+      )}
+
+      <GameBoard
+        numberToGuess={numberToGuess}
+      />
     </div>
   );
 }

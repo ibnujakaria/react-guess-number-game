@@ -1,0 +1,15 @@
+section.input {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+section.input input {
+  font-size: 2rem;
+}
+
+section.input button {
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: .4rem;
+}
